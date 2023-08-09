@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.App {
+    position: relative;
+}
+.leaflet-container {
+    height: 100vh;
+    width: 100%;
+    z-index: 0;
+}
+.table {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 10;
+    border-radius: 7px;
+}
+
+:where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+}
+:where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table-tbody >tr >td.ant-table-cell-row-hover {
+    background: rgba(250, 250, 250, 0.8);
+}
+.ant-table-wrapper table {
+    border-radius: 8px;
+}
+:where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table-tbody >tr >th, :where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table-tbody >tr >td {
+    border-bottom: none;
+}
+.ant-table-row {
+    border-radius: 8px;
+}
+
+.ant-table-thead {
+    background: rgba(255, 255, 255, 0.7);
+}
