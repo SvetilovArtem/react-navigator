@@ -1,9 +1,8 @@
 import React from 'react'
 import styles from './TableRoutes.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { selectedHandler } from '../../redux/slices/navigatorSlice'
 import { Table } from 'antd'
-import {fetchRouteError} from "../../redux/selectors/selectors";
 
 interface ITableRoutesProps {
     tableData: {
@@ -18,7 +17,6 @@ interface ITableRoutesProps {
 
 const TableRoutes = ({ tableData }: ITableRoutesProps) => {
     const dispatch = useDispatch()
-    const fetchRouteErr = useSelector(fetchRouteError)
     const columns = [
         {
             title: 'Route',
@@ -69,7 +67,6 @@ const TableRoutes = ({ tableData }: ITableRoutesProps) => {
                 selections: true
             }}
         />
-        { fetchRouteErr && <div>{fetchRouteErr}</div> }
     </div>
   )
 }
