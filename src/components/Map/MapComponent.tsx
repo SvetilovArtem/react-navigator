@@ -8,13 +8,11 @@ import polyline from '@mapbox/polyline'
 import styles from './Map.module.scss'
 
 const redOptions = { color: 'red' }
+
 const Map = () => {
   const dispatch = useAppDispatch()
   const { routes } = useSelector(routeData)
   const selected = useSelector(selectedRoute)
-  const route = useSelector(routeData)
-  console.log(route)
-
   const map = useMap()
 
   const coords = {
@@ -31,11 +29,11 @@ const Map = () => {
     dispatch(setIsPolylineFetching(true))
     dispatch(setPolylineData(coords))
     if(routes) {
-      const encodedLine = routes[0]?.geometry;
-      const waypointsData = polyline.decode(encodedLine);
-      setPolylineCoords(waypointsData);
+      const encodedLine = routes[0]?.geometry
+      const waypointsData = polyline.decode(encodedLine)
+      setPolylineCoords(waypointsData)
 
-      const bounds: L.LatLngBoundsLiteral = [[coords.latStart!, coords.lonStart!], [coords.latEnd!, coords.lonEnd!]]
+      const bounds: L.LatLngBoundsLiteral = [[coords.latStart!, coords.lonStart!], [coords.latMiddle || 0, coords.lonMiddle || 0], [coords.latEnd!, coords.lonEnd!]]
       map.flyToBounds(bounds, {
         maxZoom: map.getBoundsZoom(bounds, true),
         duration: 1,

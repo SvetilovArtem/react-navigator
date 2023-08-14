@@ -1,6 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getRoute } from '../../api/api'
-import { AppDispatch, RootState } from '../store'
+import { createSlice } from '@reduxjs/toolkit'
+
 
 export interface State {
     route: any,
@@ -21,16 +20,6 @@ const initialState: State = {
     isPolylineFetching: false
 }
 
-// const createAppAsyncThunk = createAsyncThunk.withTypes<{
-//     state: RootState
-//     dispatch: AppDispatch
-//     rejectValue: string
-//   }>()
-
-// export const fetchPolyline = createAppAsyncThunk(
-//     'polyline/fetchPolyline', getRoute
-// )
-
 export const polylineSlice = createSlice({
   name: 'polyline',
   initialState,
@@ -44,19 +33,7 @@ export const polylineSlice = createSlice({
     setFetchPolylineErr: (state, { payload }) => {
         state.fetchPolylineErr = payload
     }
-  },
-  extraReducers(builder) {
-      // builder.addCase(fetchPolyline.fulfilled, (state, {payload}) => {
-      //     state.route = payload.data
-      //     state.fetchPolylineErr = ''
-      // })
-      // builder.addCase(fetchPolyline.rejected, (state) => {
-      //     state.fetchPolylineErr = 'Маршрут не загрузился!'
-      // })
-      // builder.addCase(fetchPolyline.pending, state => {
-      //     state.fetchPolylineErr = 'Маршрут загружается!'
-      // })
-  },
+  }
 })
 
 export const {

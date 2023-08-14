@@ -2,7 +2,6 @@ import { takeEvery, call, select, put } from 'redux-saga/effects'
 import {getRoute} from "../../api/api";
 import {RootState} from "../store";
 import {setFetchPolylineErr, setIsPolylineFetching, setPolylineData} from "../slices/polylineSlice";
-
 export function* fetchPolyline() {
     const { selected } = yield select((state: RootState) => state.navigatorReducer)
 
@@ -28,6 +27,7 @@ export function* fetchPolyline() {
         const polylineData = yield call(getRoute, { ...args })
         yield put(setPolylineData(polylineData))
         yield put(setIsPolylineFetching(false))
+        yield put(setFetchPolylineErr(''))
     } catch (err: any) {
         yield put(setIsPolylineFetching(false))
         yield put(setFetchPolylineErr(err.message))
